@@ -1,5 +1,6 @@
 # Fast LZP compressor/preprocessor 
 
+```
 flzp (pre-)compressor
 
 Usage: flzp [-cdfk] [-B BITS] [-H BITS] [file ...]
@@ -12,7 +13,7 @@ Usage: flzp [-cdfk] [-B BITS] [-H BITS] [file ...]
   -H, --hash BITS    hash table 2^BITS entries   ( 8..30, default 20)
 
 With no FILE, or when FILE is -, read standard input.
-
+```
 
 Based on:
  * flzp.cpp  - (C) 2008, Matt Mahoney
