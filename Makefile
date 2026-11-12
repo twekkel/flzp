@@ -1,6 +1,6 @@
 CC      = gcc
 ARCH   ?= -march=native
-CFLAGS ?= -O3 $(ARCH) -Wall -Wextra -std=c99
+CFLAGS ?= -O3 $(ARCH) -Wall -Wextra -std=c99 -falign-loops=32
 TARGET  = flzp
 
 PREFIX ?= /usr/local
