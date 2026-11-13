@@ -234,7 +234,7 @@ static void compress(int bbits, int hbits, int minmatch) {
     while (i < blocksize) {
       int c = blk[i];
       unsigned int m = b.ht[b.h & (HN - 1)];
-      if (b.buf[m & (BN - 1)] != (unsigned char)c) {
+      if (b.p == m || b.buf[m & (BN - 1)] != (unsigned char)c) {
         put(c);
         buf_update(&b, c);
         ++i;
