@@ -346,9 +346,8 @@ static int decompress(void) {
 static void usage(int status) {
   fprintf(status ? stderr : stdout,
     "flzp (pre-)compressor\n"
-    "(C) 2008, Matt Mahoney. Free software under GPL v3.\n"
     "\n"
-    "Usage: %s [-cdfk] [-B BITS] [-H BITS] [-m MIN] [file ...]\n"
+    "Usage: %s [-cdfk] [-B BITS] [-H BITS] [-M MIN] [file ...]\n"
     "  -c, --stdout       write to stdout, keep input files\n"
     "  -d, --decompress   decompress\n"
     "  -f, --force        overwrite output files, allow terminal I/O\n"
@@ -356,7 +355,7 @@ static void usage(int status) {
     "  -k, --keep         keep input files\n"
     "  -B, --buffer BITS  history buffer 2^BITS bytes (10..30, default %d)\n"
     "  -H, --hash BITS    hash table 2^BITS entries   ( 8..30, default %d)\n"
-    "  -m, --minmatch N   min match length coded as match (2..64, default %d)\n"
+    "  -M, --minmatch N   min match length coded as match (2..64, default %d)\n"
     "\n"
     "With no FILE, or when FILE is -, read standard input.\n",
     prog, DEF_BBITS, DEF_HBITS, DEF_MMATCH);
@@ -427,13 +426,13 @@ int main(int argc, char **argv) {
     {"force",      no_argument,       0, 'f'},
     {"buffer",     required_argument, 0, 'B'},
     {"hash",       required_argument, 0, 'H'},
-    {"minmatch",   required_argument, 0, 'm'},
+    {"minmatch",   required_argument, 0, 'M'},
     {"help",       no_argument,       0, 'h'},
     {0, 0, 0, 0}
   };
 
   int o;
-  while ((o = getopt_long(argc, argv, "dckfB:H:m:h", lopts, NULL)) != -1) {
+  while ((o = getopt_long(argc, argv, "dckfB:H:M:h", lopts, NULL)) != -1) {
     switch (o) {
       case 'd': decomp = 1;   break;
       case 'c': tostdout = 1; break;
@@ -441,7 +440,7 @@ int main(int argc, char **argv) {
       case 'f': force = 1;    break;
       case 'B': bbits = parse_bits(optarg, 10, 30, 'B'); break;
       case 'H': hbits = parse_bits(optarg,  8, 30, 'H'); break;
-      case 'm': minmatch = parse_bits(optarg, 2, 64, 'm'); break;
+      case 'M': minmatch = parse_bits(optarg, 2, 64, 'M'); break;
       case 'h': usage(0); break;
       default:  usage(1);
     }

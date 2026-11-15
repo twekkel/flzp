@@ -3,7 +3,7 @@
 ```
 flzp (pre-)compressor
 
-Usage: flzp [-cdfk] [-B BITS] [-H BITS] [file ...]
+Usage: flzp [-cdfk] [-B BITS] [-H BITS] [-M MIN] [file ...]
   -c, --stdout       write to stdout, keep input files
   -d, --decompress   decompress
   -f, --force        overwrite output files, allow terminal I/O
@@ -11,6 +11,7 @@ Usage: flzp [-cdfk] [-B BITS] [-H BITS] [file ...]
   -k, --keep         keep input files
   -B, --buffer BITS  history buffer 2^BITS bytes (10..30, default 22)
   -H, --hash BITS    hash table 2^BITS entries   ( 8..30, default 20)
+  -M, --minmatch N   min match length coded as match (2..64, default 2)
 
 With no FILE, or when FILE is -, read standard input.
 ```
